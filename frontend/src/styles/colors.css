@@ -1,0 +1,71 @@
+/* Enhanced Color System for Hackathon Winner Upgrade */
+
+:root {
+  /* Success Colors */
+  --color-success-primary: #00D4AA;
+  --color-success-secondary: #10B981;
+  --color-success-glow: rgba(0, 212, 170, 0.25);
+
+  /* Warning Colors */
+  --color-warning-primary: #FF6B35;
+  --color-warning-secondary: #FF8C42;
+  --color-warning-glow: rgba(255, 107, 53, 0.25);
+
+  /* Premium Colors */
+  --color-premium-primary: #6B4CE6;
+  --color-premium-secondary: #8B5CF6;
+  --color-premium-glow: rgba(107, 76, 230, 0.25);
+
+  /* Critical Colors */
+  --color-critical: #FF4D6D;
+  --color-critical-glow: rgba(255, 77, 109, 0.2);
+
+  /* Neutral Colors */
+  --color-neutral-600: #4B5563;
+  --color-neutral-700: #6B7280;
+  --color-neutral-800: #9CA3AF;
+
+  /* Existing Colors (maintained for compatibility) */
+  --color-bg-deepest: #070b14;
+  --color-bg-deep: #0d1220;
+  --color-bg-card: rgba(255, 255, 255, 0.04);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.07);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-bright: rgba(255, 255, 255, 0.15);
+  --color-accent-green: #00d4aa;
+  --color-accent-green-glow: rgba(0, 212, 170, 0.25);
+  --color-accent-red: #ff4d6d;
+  --color-accent-red-glow: rgba(255, 77, 109, 0.2);
+  --color-accent-blue: #4f8fe8;
+  --color-accent-purple: #a78bfa;
+  --color-text-primary: rgba(255, 255, 255, 0.92);
+  --color-text-secondary: rgba(255, 255, 255, 0.55);
+  --color-text-muted: rgba(255, 255, 255, 0.3);
+}
+
+/* High Contrast Mode */
+.high-contrast-mode {
+  --color-text-primary: #000000;
+  --color-bg-deepest: #FFFFFF;
+  --color-bg-card: #F0F0F0;
+  --color-border: #000000;
+  --color-success-primary: #008000;
+  --color-warning-primary: #FF0000;
+  --color-critical: #0000FF;
+}
+
+/* Contrast Ratio Utilities */
+.wcag-aa {
+  /* Minimum 4.5:1 contrast ratio */
+}
+
+.wcag-aaa {
+  /* Minimum 7:1 contrast ratio */
+}
+
+/* Color Transition */
+.color-transition {
+  transition: background-color 200ms ease-in-out,
+              color 200ms ease-in-out,
+              border-color 200ms ease-in-out;
+}

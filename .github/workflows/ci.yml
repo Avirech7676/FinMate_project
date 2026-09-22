@@ -1,0 +1,86 @@
+name: FinMate 2.0 CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, feature/** ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  backend-validation:
+    name: Backend CI (Lint, Typecheck & Pytest)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-asyncio slowapi scikit-learn
+
+      - name: Run Backend Regression Tests
+        working-directory: backend
+        env:
+          SECRET_KEY: "ci-secret-key-for-testing-only-12345"
+          ENVIRONMENT: "test"
+        run: |
+          python -m pytest tests/ test_main.py -v
+
+  frontend-validation:
+    name: Frontend CI (Lint, Typecheck, Build & Vitest)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install Frontend Dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Typecheck and Build Bundle
+        working-directory: frontend
+        run: npm run build
+
+      - name: Run Vitest Suite
+        working-directory: frontend
+        run: npx vitest run
+
+  mobile-validation:
+    name: Mobile CI (Dart & Multi-Isolate Concurrency)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Dart SDK
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Run Dart Concurrency & Unit Test Suite
+        working-directory: flutter_app
+        run: dart test/run_all_tests.dart
+
+      - name: Run Mobile Integration Test Pipeline
+        working-directory: flutter_app
+        run: dart integration_test/app_integration_test.dart
+

@@ -1,0 +1,118 @@
+{
+  "10,000": {
+    "Transaction Retrieval (50 limit)": {
+      "dataset_size": 10000,
+      "workload_size": "50 transactions",
+      "operation": "Single-user indexed pagination query",
+      "p50_ms": 0.92,
+      "p95_ms": 1.39,
+      "error_rate_pct": 0.0
+    },
+    "Transaction Retrieval (200 limit)": {
+      "dataset_size": 10000,
+      "workload_size": "200 transactions",
+      "operation": "Single-user indexed pagination query",
+      "p50_ms": 2.43,
+      "p95_ms": 3.54,
+      "error_rate_pct": 0.0
+    },
+    "Analytics (30-day range aggregate)": {
+      "dataset_size": 10000,
+      "workload_size": "All transactions in 30-day window (~82-820 txns)",
+      "operation": "Date range query + categorical spending aggregation",
+      "p50_ms": 15.03,
+      "p95_ms": 18.33,
+      "error_rate_pct": 0.0
+    },
+    "Anomaly Detection (90-day window capped)": {
+      "dataset_size": 10000,
+      "workload_size": "300 transactions (capped slice)",
+      "operation": "3-tier Rule + Statistical + Isolation Forest anomaly detection",
+      "p50_ms": 774.79,
+      "p95_ms": 928.37,
+      "error_rate_pct": 0.0
+    },
+    "Forecast Generation (180-day window capped)": {
+      "dataset_size": 10000,
+      "workload_size": "500 transactions (capped slice)",
+      "operation": "Statsmodels Holt-Winters triple exponential smoothing",
+      "p50_ms": 516.6,
+      "p95_ms": 768.09,
+      "error_rate_pct": 0.0
+    },
+    "Explainable Health Score": {
+      "dataset_size": 10000,
+      "workload_size": "7 daily points + goal status vector",
+      "operation": "Multi-factor explainable health score calculation",
+      "p50_ms": 0.13,
+      "p95_ms": 0.4,
+      "error_rate_pct": 0.0
+    },
+    "Cash-Flow Projection (30 days forward)": {
+      "dataset_size": 10000,
+      "workload_size": "200 transactions (capped slice) + 1 goal",
+      "operation": "30-day daily balance trajectory & recurring subscription projection",
+      "p50_ms": 25.61,
+      "p95_ms": 37.18,
+      "error_rate_pct": 0.0
+    }
+  },
+  "100,000": {
+    "Transaction Retrieval (50 limit)": {
+      "dataset_size": 100000,
+      "workload_size": "50 transactions",
+      "operation": "Single-user indexed pagination query",
+      "p50_ms": 5.08,
+      "p95_ms": 12.11,
+      "error_rate_pct": 0.0
+    },
+    "Transaction Retrieval (200 limit)": {
+      "dataset_size": 100000,
+      "workload_size": "200 transactions",
+      "operation": "Single-user indexed pagination query",
+      "p50_ms": 9.14,
+      "p95_ms": 11.98,
+      "error_rate_pct": 0.0
+    },
+    "Analytics (30-day range aggregate)": {
+      "dataset_size": 100000,
+      "workload_size": "All transactions in 30-day window (~82-820 txns)",
+      "operation": "Date range query + categorical spending aggregation",
+      "p50_ms": 380.26,
+      "p95_ms": 555.82,
+      "error_rate_pct": 0.0
+    },
+    "Anomaly Detection (90-day window capped)": {
+      "dataset_size": 100000,
+      "workload_size": "300 transactions (capped slice)",
+      "operation": "3-tier Rule + Statistical + Isolation Forest anomaly detection",
+      "p50_ms": 1609.59,
+      "p95_ms": 1800.24,
+      "error_rate_pct": 0.0
+    },
+    "Forecast Generation (180-day window capped)": {
+      "dataset_size": 100000,
+      "workload_size": "500 transactions (capped slice)",
+      "operation": "Statsmodels Holt-Winters triple exponential smoothing",
+      "p50_ms": 2064.11,
+      "p95_ms": 2414.05,
+      "error_rate_pct": 0.0
+    },
+    "Explainable Health Score": {
+      "dataset_size": 100000,
+      "workload_size": "7 daily points + goal status vector",
+      "operation": "Multi-factor explainable health score calculation",
+      "p50_ms": 0.18,
+      "p95_ms": 0.23,
+      "error_rate_pct": 0.0
+    },
+    "Cash-Flow Projection (30 days forward)": {
+      "dataset_size": 100000,
+      "workload_size": "200 transactions (capped slice) + 1 goal",
+      "operation": "30-day daily balance trajectory & recurring subscription projection",
+      "p50_ms": 274.99,
+      "p95_ms": 494.64,
+      "error_rate_pct": 0.0
+    }
+  }
+}

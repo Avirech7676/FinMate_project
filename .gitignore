@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+backend/__pycache__/
+.coverage
+coverage/
+
+# Env / secrets
+.env
+.env.*
+backend/.env
+
+# Local databases / artifacts
+*.db
+backend/*.db
+*.sqlite
+*.sqlite3
+benchmark_perf.db
+test*.db
+finmate.db
+
+# Logs & Debug artifacts
+*.log
+.cursor/
+backend/chat_*.txt
+backend/gemini_*.txt
+backend/final_log.txt
+backend/final_verify.txt
+backend/full_model_list.txt
+backend/model_list.txt
+backend/out.txt
+
+# Node / frontend
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+build/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

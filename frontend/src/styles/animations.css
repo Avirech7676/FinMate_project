@@ -1,0 +1,140 @@
+/* Micro-interactions and Animations */
+
+/* Confetti Animation (3 seconds) */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(500px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti-animation {
+  animation: confetti-fall 3s ease-out forwards;
+}
+
+/* Shake Animation (budget exceeded) */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+.shake-animation {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Progress Bar Animation (800ms) */
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--progress-value, 100%);
+  }
+}
+
+.progress-bar-animate {
+  animation: progress-fill 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Hover Scale (150ms) */
+.interactive-card {
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+.interactive-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 212, 170, 0.15);
+}
+
+/* Fade In (300ms) */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in-animation {
+  animation: fade-in 300ms ease-in forwards;
+}
+
+/* Slide Up Animation */
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up-animation {
+  animation: slide-up 300ms ease-out forwards;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounce-animation {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Performance constraint: max 3 concurrent animations */
+.animation-limit-1 {
+  animation-delay: 0ms;
+}
+
+.animation-limit-2 {
+  animation-delay: 100ms;
+}
+
+.animation-limit-3 {
+  animation-delay: 200ms;
+}

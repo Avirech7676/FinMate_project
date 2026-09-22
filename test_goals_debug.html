@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Goals Debug Test</title>
+</head>
+<body>
+    <h1>Goals Endpoint Debug</h1>
+    <div id="result"></div>
+    
+    <script>
+        async function testGoals() {
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                // First test without auth
+                resultDiv.innerHTML += '<h3>Testing without auth:</h3>';
+                const response1 = await fetch('http://127.0.0.1:8000/goals');
+                resultDiv.innerHTML += `<p>Status: ${response1.status}</p>`;
+                const data1 = await response1.text();
+                resultDiv.innerHTML += `<p>Response: ${data1}</p>`;
+                
+                // Test with dummy auth
+                resultDiv.innerHTML += '<h3>Testing with dummy auth:</h3>';
+                const response2 = await fetch('http://127.0.0.1:8000/goals', {
+                    headers: {
+                        'Authorization': 'Bearer dummy_token'
+                    }
+                });
+                resultDiv.innerHTML += `<p>Status: ${response2.status}</p>`;
+                const data2 = await response2.text();
+                resultDiv.innerHTML += `<p>Response: ${data2}</p>`;
+                
+            } catch (error) {
+                resultDiv.innerHTML += `<p>Error: ${error.message}</p>`;
+            }
+        }
+        
+        testGoals();
+    </script>
+</body>
+</html>

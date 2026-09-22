@@ -1,0 +1,340 @@
+/* Accessibility Enhancements */
+
+/* Completely remove all focus outlines and indicators */
+*,
+*:focus,
+*:focus-visible,
+*:active,
+button,
+a,
+input,
+select,
+textarea,
+div,
+[tabindex] {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Ensure no focus styles anywhere */
+button:focus,
+button:focus-visible,
+button:active,
+a:focus,
+a:focus-visible,
+a:active,
+input:focus,
+input:focus-visible,
+input:active,
+select:focus,
+select:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: inherit !important;
+}
+
+/* Skip Links */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-premium-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Keyboard Navigation */
+.keyboard-nav-active:focus-within {
+  outline: 2px solid var(--color-premium-primary);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  :root {
+    --color-text-primary: #000000;
+    --color-bg-deepest: #FFFFFF;
+    --color-border: #000000;
+  }
+
+  .glass-card {
+    border-width: 2px;
+  }
+
+  button,
+  a {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-deepest: #070b14;
+    --color-text-primary: rgba(255, 255, 255, 0.92);
+  }
+}
+
+/* Light Mode Support */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg-deepest: #FFFFFF;
+    --color-text-primary: #000000;
+  }
+}
+
+/* Touch Target Size */
+button,
+a,
+input[type='checkbox'],
+input[type='radio'] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Text Spacing */
+@supports (letter-spacing: 0.12em) {
+  p,
+  li,
+  dt,
+  dd {
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Line Height */
+p,
+li,
+dt,
+dd {
+  line-height: 1.5;
+}
+
+/* Color Contrast Utilities */
+.high-contrast {
+  --color-text-primary: #000000;
+  --color-bg-card: #FFFFFF;
+  --color-border: #000000;
+  --color-success-primary: #008000;
+  --color-warning-primary: #FF0000;
+  --color-critical: #0000FF;
+}
+
+/* Focus Visible for Interactive Elements */
+.interactive-card:focus-visible {
+  outline: 2px solid var(--color-premium-primary);
+  outline-offset: 4px;
+}
+
+/* ARIA Live Region Styling */
+[aria-live] {
+  position: relative;
+}
+
+[aria-live='polite'],
+[aria-live='assertive'] {
+  min-height: 1.5em;
+}
+
+/* Visible Focus Indicator */
+.focus-indicator {
+  position: relative;
+}
+
+.focus-indicator:focus-visible::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--color-premium-primary);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Semantic Color Meanings */
+.success {
+  color: var(--color-success-primary);
+}
+
+.warning {
+  color: var(--color-warning-primary);
+}
+
+.error,
+.critical {
+  color: var(--color-critical);
+}
+
+.info {
+  color: var(--color-accent-blue);
+}
+
+/* Text Alternatives for Icons */
+.icon-only {
+  position: relative;
+}
+
+.icon-only[aria-label]::after {
+  content: attr(aria-label);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.icon-only:hover::after {
+  opacity: 1;
+}
+
+/* Keyboard Shortcuts Help */
+.keyboard-shortcuts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.keyboard-shortcuts kbd {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+/* Tooltip Accessibility */
+.tooltip {
+  position: relative;
+}
+
+.tooltip[aria-label]::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* Form Accessibility */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+input:invalid {
+  border-color: var(--color-critical);
+}
+
+input:valid {
+  border-color: var(--color-success-primary);
+}
+
+/* Error Messages */
+.error-message {
+  color: var(--color-critical);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Success Messages */
+.success-message {
+  color: var(--color-success-primary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: ' (Loading...)';
+  font-size: 0.875rem;
+}
+
+/* Disabled States */
+:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  button {
+    border: 1px solid #000;
+  }
+}
